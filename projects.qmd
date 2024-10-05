@@ -1,0 +1,20 @@
+---
+title: "Projects"
+---
+
+---
+about:
+  template: jolla
+  id: about-block
+  image: "img/my_image.jpg"
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/AdamEzzat1
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/adamezzat/
+    - icon: envelope
+      text: Email
+      href: "mailto:mail.adamezzat24@gmail.com"  
+---

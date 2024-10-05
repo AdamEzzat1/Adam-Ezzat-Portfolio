@@ -1,0 +1,208 @@
+/*-- scss:defaults --*/
+
+// Color Palette
+$fog-grey: #d8d8d8;
+$gaslight-yellow: #ffd54f;
+$deerstalker-brown: #8b4513;
+$pipe-smoke: #708090;
+$magnifying-glass: #f5f5f5;
+$london-brick: #8b4513;
+$watson-navy: #000080;
+$holmes-tweed: #d2b48c;
+
+// Typography
+$font-family-sans-serif: 'Baskerville', 'Times New Roman', serif;
+$font-family-monospace: 'Courier New', monospace;
+$headings-font-family: 'Fredericka the Great', sans-serif; // Changed to Fredericka the Great and removed cursive
+
+// Theme Variables
+$primary: $watson-navy;
+$secondary: $gaslight-yellow;
+$body-bg: $fog-grey;
+$body-color: $pipe-smoke;
+
+/*-- scss:rules --*/
+
+// Mixins
+@mixin magnifying-glass($size: 200px) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -$size/4;
+    left: -$size/4;
+    width: $size;
+    height: $size;
+    border: 4px solid $deerstalker-brown;
+    border-radius: 50%;
+    background: rgba($magnifying-glass, 0.2);
+  }
+}
+
+@mixin victorian-border {
+  border: 2px solid $deerstalker-brown;
+  box-shadow: 0 0 10px rgba($pipe-smoke, 0.5);
+}
+
+// Base Styles
+body {
+  font-family: $font-family-sans-serif;
+  line-height: 1.6;
+  background-color: $body-bg; // Set a solid background color
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+  color: $primary;
+}
+
+a {
+  color: $watson-navy;
+  text-decoration: none;
+  &:hover {
+    color: $gaslight-yellow;
+    text-decoration: underline;
+  }
+}
+
+// Layout Components
+.navbar {
+  background-color: $london-brick;
+  color: $gaslight-yellow;
+  font-family: $headings-font-family;
+  @include victorian-border;
+}
+
+.footer {
+  background-color: $holmes-tweed;
+  color: $deerstalker-brown;
+  font-family: $font-family-monospace;
+  text-align: center;
+  padding: 1rem;
+  @include victorian-border;
+}
+
+// Content Styles
+.case-file {
+  background-color: rgba($holmes-tweed, 0.2);
+  border: 2px solid $deerstalker-brown;
+  font-family: $font-family-monospace;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  @include victorian-border;
+}
+
+.clue {
+  @include magnifying-glass(150px);
+  color: $primary;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+blockquote {
+  font-style: italic;
+  border-left: 4px solid $gaslight-yellow;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: $pipe-smoke;
+}
+
+// Button Styles
+.btn {
+  background-color: $watson-navy;
+  color: $gaslight-yellow;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: $font-family-sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: $gaslight-yellow;
+    color: $watson-navy;
+  }
+}
+
+// Custom Classes
+.victorian-card {
+  @include victorian-border;
+  background-color: rgba($fog-grey, 0.7);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detective-list {
+  list-style-type: none;
+  padding-left: 0;
+  li::before {
+    content: '🔍';
+    margin-right: 0.5rem;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .magnifying-glass {
+    display: none;
+  }
+
+  .case-file {
+    padding: 0.5rem;
+  }
+}
+
+// Print styles
+@media print {
+  body {
+    background-image: none;
+    color: black;
+  }
+
+  .navbar, .footer {
+    display: none;
+  }
+}
+
+// Additional styles from the original version
+// Code block styling
+pre {
+  background-color: darken($body-bg, 5%);
+  border: 1px solid $secondary;
+  border-radius: 4px;
+}
+
+// Table styling
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+
+  th, td {
+    border: 1px solid $secondary;
+    padding: 0.5em;
+  }
+
+  th {
+    background-color: $secondary;
+    color: $body-bg;
+  }
+}
+
+// Decorative elements
+.quarto-title-block {
+  &::before {
+    content: "🔍";
+    font-size: 2em;
+    display: block;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+}
+
+.section h2::before {
+  content: "📜 ";
+}
+
+.callout-note {
+  border-left-color: $primary;
+  background-color: lighten($secondary, 20%);
+}
