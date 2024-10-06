@@ -13,9 +13,8 @@ website:
 
 format:
   html:
-    theme:
-      - default
-      - sherlock.scss
+    theme: cosmo dark
+    css: styles.css
     toc: true
 
 editor: visual
